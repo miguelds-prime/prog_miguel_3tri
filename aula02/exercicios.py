@@ -7,6 +7,13 @@ Escreva sua solucao no lugar do 'pass'.
 
 def remove_negativos(lista):
     """Devolve uma lista nova so com os numeros que nao sao negativos."""
+
+    n
+    print("Qual o tamanho da lista?")
+    int(input(n))
+    def remove_negativos(lista(n))
+    for i in range(n)
+        
     pass
 
 
