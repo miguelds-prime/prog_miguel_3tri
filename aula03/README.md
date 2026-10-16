@@ -31,10 +31,7 @@ def soma_contando(lista):
         soma = soma + n
         operacoes = operacoes + 1
     return soma, operacoes     # <- dois valores
-```
-
-Quem devolver só o resultado não passa em nenhum teste. Em Python isso se chama tupla, e
-por enquanto basta saber que dá para devolver mais de um valor separando por vírgula.
+```e dá para devolver mais de um valor separando por vírgula.
 
 ---
 

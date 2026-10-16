@@ -37,7 +37,15 @@ def tem_repetido_contando(lista):
     """Devolve (True, comparacoes) ou (False, comparacoes).
     Conte 1 comparacao cada vez que comparar um par de elementos.
     Pare assim que encontrar o primeiro repetido."""
-    pass
+    def tem_repetido(lista):
+        comparacoes=0
+        for i in range(len(lista)):
+            for j in range(i+1, len(lista)):
+                comparacoes += 1
+                if lista[i]==lista[j]:
+                    return True, comparacoes
+                if else:
+                    return False, comparacoes
 
 
 def quantas_divisoes(n):
