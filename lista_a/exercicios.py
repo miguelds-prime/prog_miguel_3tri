@@ -1,112 +1,221 @@
-"""Lista A - Python, listas, busca e custo.
+# Lista A - Miguel D. Silva (N 28, 1C)
+# Respostas recuperadas do arquivo enviado pelo aluno (Codespaces sem cota).
 
-NAO mude o nome deste arquivo nem a assinatura das funcoes.
-Escreva sua solucao no lugar do 'pass'.
-
-Os exercicios do Bloco 3 devolvem DOIS valores: o resultado e a contagem.
-"""
-
-# ---------- Bloco 1: listas e percurso ----------
-
+# ---------- Bloco 1 ----------
 def conta_negativos(lista):
-    """Quantos numeros da lista sao menores que zero."""
-    pass
+    t = 0
+    for a in lista:
+        if a < 0:
+            t += 1
+    return t
 
 
 def media(lista):
-    """Media dos numeros. Lista vazia devolve 0."""
-    pass
+    if not lista:
+        return 0
+
+    s = 0
+    for a in lista:
+        s += a
+    return s / len(lista)
 
 
 def sem_o_maior(lista):
-    """Lista NOVA sem o maior valor. Se o maior repete, tira so o primeiro."""
-    pass
+    if not lista:
+        return []
+
+    maior = lista[0]
+    for n in lista:
+        if n > maior:
+            maior = n
+
+    a = []
+    ja_tirou = False
+    for n in lista:
+        if n == maior and not ja_tirou:
+            ja_tirou = True
+        else:
+            a.append(n)
+    return a
 
 
 def acumulada(lista):
-    """Lista NOVA onde cada posicao e a soma de tudo ate ali.
-    acumulada([1, 2, 3]) -> [1, 3, 6]"""
-    pass
+    a = []
+    s = 0
+
+    for n in lista:
+        s += n
+        a.append(s)
+    return a
 
 
 def achata(lista_de_listas):
-    """(Desafio) Junta as sublistas numa lista so.
-    achata([[1, 2], [3]]) -> [1, 2, 3]"""
-    pass
+    a = []
+    for sublista in lista_de_listas:
+        for item in sublista:
+            a.append(item)
+    return a
 
 
-# ---------- Bloco 2: busca ----------
-
+# ---------- Bloco 2 ----------
 def busca_ultima(lista, alvo):
-    """ULTIMA posicao do alvo, ou -1."""
-    pass
+    p = -1
+    for i in range(len(lista)):
+        if lista[i] == alvo:
+            p = i
+    return p
 
 
 def conta_ocorrencias(lista, alvo):
-    """Quantas vezes o alvo aparece."""
-    pass
+    t = 0
+    for n in lista:
+        if n == alvo:
+            t += 1
+    return t
 
 
 def primeiro_maior_que(lista, limite):
-    """Posicao do primeiro elemento maior que limite, ou -1."""
-    pass
+    for i in range(len(lista)):
+        if lista[i] > limite:
+            return i
+    return -1
 
 
 def busca_binaria_primeira(lista, alvo):
-    """(Desafio) Lista JA ORDENADA, o alvo pode repetir.
-    Devolve a PRIMEIRA posicao do alvo, ou -1. Sem percorrer tudo."""
-    pass
+    inicio = 0
+    fim = len(lista) - 1
+    p = -1
+
+    while inicio <= fim:
+        meio = (inicio + fim) // 2
+        if lista[meio] == alvo:
+            p = meio
+            fim = meio - 1
+        elif lista[meio] < alvo:
+            inicio = meio + 1
+        else:
+            fim = meio - 1
+
+    return p
 
 
-# ---------- Bloco 3: custo ----------
-
+# ---------- Bloco 3 ----------
 def soma_pares_contando(lista):
-    """(soma_dos_pares, operacoes). Conte 1 por elemento examinado."""
-    pass
+    s = 0
+    operacoes = 0
+
+    for a in lista:
+        operacoes += 1
+        if a % 2 == 0:
+            s += a
+    return s, operacoes
 
 
 def maior_contando(lista):
-    """(maior, comparacoes). Lista nao vazia.
-    Conte 1 comparacao por elemento a partir do segundo."""
-    pass
+    if not lista:
+        return None, 0
+    maior = lista[0]
+    comparacoes = 0
+
+    for i in range(1, len(lista)):
+        comparacoes += 1
+        if lista[i] > maior:
+            maior = lista[i]
+
+    return maior, comparacoes
 
 
 def tem_soma_contando(lista, alvo):
-    """(True/False, comparacoes). Existem dois elementos que somam alvo?
-    Conte 1 por par comparado. Pare assim que achar."""
-    pass
+    comparacoes = 0
+
+    for i in range(len(lista)):
+        for j in range(i + 1, len(lista)):
+            comparacoes += 1
+            if lista[i] + lista[j] == alvo:
+                return True, comparacoes
+
+    return False, comparacoes
 
 
 def ordenada_contando(lista):
-    """(Desafio) (True/False, comparacoes). A lista esta em ordem crescente?
-    Conte 1 por par de vizinhos comparado. Pare no primeiro fora de ordem."""
-    pass
+    comparacoes = 0
+
+    for a in range(len(lista) - 1):
+        comparacoes += 1
+        if lista[a] > lista[a + 1]:
+            return False, comparacoes
+
+    return True, comparacoes
 
 
-# ---------- Bloco 4: padroes ----------
-
+# ---------- Bloco 4 ----------
 def inverte_no_lugar(lista):
-    """Inverte a PROPRIA lista recebida. NAO cria lista nova e NAO devolve nada."""
-    pass
+    inicio = 0
+    fim = len(lista) - 1
+    while inicio < fim:
+
+        lista[inicio], lista[fim] = lista[fim], lista[inicio]
+        inicio += 1
+        fim -= 1
 
 
 def eh_palindromo(lista):
-    """True se a lista e igual lida de tras para frente."""
-    pass
+    inicio = 0
+    fim = len(lista) - 1
+
+    while inicio < fim:
+        if lista[inicio] != lista[fim]:
+            return False
+        inicio += 1
+        fim -= 1
+
+    return True
 
 
 def par_que_soma(lista, alvo):
-    """Lista JA ORDENADA. Devolve (i, j) das posicoes cujos valores somam alvo,
-    ou (-1, -1). Sem laco dentro de laco."""
-    pass
+    inicio = 0
+    fim = len(lista) - 1
+
+    while inicio < fim:
+        s = lista[inicio] + lista[fim]
+        if s == alvo:
+            return inicio, fim
+        elif s < alvo:
+            inicio += 1
+        else:
+            fim -= 1
+
+    return -1, -1
 
 
 def soma_maxima_janela(lista, k):
-    """Maior soma de k elementos seguidos.
-    soma_maxima_janela([1, 2, 3, 4], 2) -> 7"""
-    pass
+    if len(lista) < k or k <= 0:
+        return 0
+
+    s = sum(lista[:k])
+    melhor = s
+
+    for i in range(k, len(lista)):
+
+        s = s + lista[i] - lista[i - k]
+        if s > melhor:
+            melhor = s
+
+    return melhor
 
 
 def parenteses_balanceados(texto):
-    """(Desafio) True se os ( ) e [ ] do texto abrem e fecham na ordem certa."""
-    pass
+    pilha = []
+    pares = {')': '(', ']': '['}
+
+    for char in texto:
+        if char in "([":
+            pilha.append(char)
+        elif char in ")]":
+            if not pilha:
+                return False
+            topo = pilha.pop()
+            if topo != pares[char]:
+                return False
+
+    return len(pilha) == 0
