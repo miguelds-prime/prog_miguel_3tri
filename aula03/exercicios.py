@@ -16,7 +16,14 @@ def soma_contando(lista):
     """Devolve (soma, operacoes).
     Conte 1 operacao para cada numero que voce somar.
     soma_contando([1, 2, 3]) -> (6, 3)"""
-    pass
+    a = []
+    s = 0
+    
+    for n in lista:
+        s += n
+        a.append(s)
+
+    return a, n
 
 
 def busca_linear_contando(lista, alvo):
@@ -37,15 +44,7 @@ def tem_repetido_contando(lista):
     """Devolve (True, comparacoes) ou (False, comparacoes).
     Conte 1 comparacao cada vez que comparar um par de elementos.
     Pare assim que encontrar o primeiro repetido."""
-    def tem_repetido(lista):
-        comparacoes=0
-        for i in range(len(lista)):
-            for j in range(i+1, len(lista)):
-                comparacoes += 1
-                if lista[i]==lista[j]:
-                    return True, comparacoes
-                if else:
-                    return False, comparacoes
+    
 
 
 def quantas_divisoes(n):
